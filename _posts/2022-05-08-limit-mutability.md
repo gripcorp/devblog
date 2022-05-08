@@ -1,6 +1,7 @@
 ---
-title: "이펙티브 코틀린 - 가변성을 제한하라"
-categories: post/kotlin
+title: "이펙티브 코틀린 - 1. 가변성을 제한하라"
+categories: [posts, kotlin, effective-kotlin]
+tag: [kotlin, effective-kotlin]
 ---
 ### 상태는 양날의 검
 
