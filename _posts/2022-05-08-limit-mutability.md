@@ -1,5 +1,8 @@
 ---
-title: "이펙티브 코틀린 - 1. 가변성을 제한합시다"
+author_name: 김종민
+author_nickname: jongmin-kim-grip
+title: 이펙티브 코틀린 - 1. 가변성을 제한합시다
+excerpt: 상태는 변덕꾸러기여서 같이 일하기 피곤해요
 categories: [posts, kotlin, effective-kotlin]
 tag: [kotlin, effective-kotlin]
 ---
