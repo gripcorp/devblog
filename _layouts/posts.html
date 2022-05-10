@@ -18,7 +18,7 @@ layout: default
                 <div class="posts-excert">{{ post.excerpt }}</div>
                 {%- endif -%}
                 <div class="posts-author">
-                    <img src="https://github.com/{{ post.author_nickname }}.png?size=84" class="posts-author-img" />
+                    <img src="https://github.com/{{ post.github_nickname }}.png?size=84" class="posts-author-img" />
                     <span class="posts-author-name">{{ post.author_name }}</span>
                     <span class="posts-date">{{ post.date | date: date_format }}</span>
                 </div>

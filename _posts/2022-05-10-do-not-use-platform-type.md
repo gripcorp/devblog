@@ -1,6 +1,6 @@
 ---
 author_name: 김종민
-author_nickname: jongmin-kim-grip
+github_nickname: jongmin-kim-grip
 title: 이펙티브 코틀린 - 3. 최대한 플랫폼 타입을 사용하지 맙시다 
 excerpt: 코틀린을 자바와 함께 사용할 때 발생할 수 있는 문제는? 
 categories: [posts, kotlin, effective-kotlin]

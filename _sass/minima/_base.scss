@@ -23,6 +23,24 @@ a {
 }
 
 /**
+ * Code
+ */
+pre {
+    background: #fafafa !important;
+    border-radius: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 8px;
+}
+
+code {
+    background: #fafafa !important;
+    border-radius: 4px;
+    padding: 2px 4px 2px 4px;
+}
+
+
+/**
  * Selection
  */
 ::selection {

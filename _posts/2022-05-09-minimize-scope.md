@@ -1,6 +1,6 @@
 ---
 author_name: 김종민
-author_nickname: jongmin-kim-grip
+github_nickname: jongmin-kim-grip
 title: 이펙티브 코틀린 - 2. 변수의 스코프를 최소화합시다
 excerpt: 좁힐 수 있을 때 최대한 좁혀놓으면 편해요 
 categories: [posts, kotlin, effective-kotlin]
