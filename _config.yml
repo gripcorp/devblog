@@ -2,7 +2,7 @@ title: 그립 개발자 블로그
 author:
   name: GitHub User
   email: your-email@domain.com
-description: > # this means to ignore newlines until "show_excerpts:"
+description: >
   Everyone can sell, 전국민 라이브 大장터
 
 show_excerpts: true # set to true to show excerpts on the homepage
@@ -10,7 +10,7 @@ show_excerpts: true # set to true to show excerpts on the homepage
 # Minima date format
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
 minima:
-  date_format: "%F %R"
+  date_format: "%F"
 
   # generate social links in footer
   social_links:
