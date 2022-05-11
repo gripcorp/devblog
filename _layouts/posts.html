@@ -15,10 +15,10 @@ layout: default
             <a href="{{ post.url | relative_url }}">
                 <div class="posts-title">{{ post.title | escape }}</div>
                 {%- if site.show_excerpts -%}
-                <div class="posts-excert">{{ post.excerpt }}</div>
+                <div class="posts-excerpt">{{ post.excerpt }}</div>
                 {%- endif -%}
                 <div class="posts-author">
-                    <img src="https://github.com/{{ post.github_nickname }}.png?size=84" class="posts-author-img" />
+                    <img src="https://github.com/{{ post.github_nickname }}.png?size=72" class="posts-author-img" />
                     <span class="posts-author-name">{{ post.author_name }}</span>
                     <span class="posts-date">{{ post.date | date: date_format }}</span>
                 </div>

@@ -4,7 +4,8 @@ github_nickname: jongmin-kim-grip
 title: 이펙티브 코틀린 - 1. 가변성을 제한합시다
 excerpt: 상태는 변덕꾸러기여서 같이 일하기 피곤해요
 categories: [posts, kotlin, effective-kotlin]
-tag: [kotlin, effective-kotlin]
+tags: [kotlin, effective-kotlin]
+header_image: http://image.yes24.com/goods/106225986/XL
 ---
 ## 상태는 양날의 검
 
@@ -25,9 +26,9 @@ suspend fun noThreadSafe() {
     coroutineScope {
         repeat(100) {
             launch {
-	            delay(10)
-	            number += 1 // No synchronized
-	        }
+                delay(10)
+                number += 1 // No synchronized
+            }
         }
     }
 
@@ -94,11 +95,13 @@ val fullNameByFinal: String? = surName?.let { "$name $it" }
 
 fun main() {
     if (fullNameByGetter != null) {
-        println(fullNameByGetter.length) // Not available smart cast, Compile error
+        // Unable to smart cast, Compile error
+        println(fullNameByGetter.length)
     }
 
     if (fullNameByFinal != null) {
-        println(fullNameByFinal.length) // Available smart cast, 11
+        // Able to smart cast, 11
+        println(fullNameByFinal.length)
     }
 }
 ```

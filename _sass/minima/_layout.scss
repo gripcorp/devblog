@@ -1,6 +1,3 @@
-/**
- * Wrapper
- */
 .wrapper {
     max-width: calc(#{$content-width} - (#{$spacing-unit}));
     margin-right: auto;
@@ -13,307 +10,239 @@
         padding-right: $spacing-unit;
         padding-left: $spacing-unit;
     }
-    padding-left: 320px;
 }
 
-/**
- * Header
- */
 .header {
     padding: 16px;
-    background: linear-gradient(135deg,#ff008a,#ff462b)
-}
+    background: linear-gradient(135deg,#ff008a,#ff462b);
 
-.header-logo {
-    height: 32px;
-    margin-right: 8px;
-    vertical-align: middle;
-}
-
-.header-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #ffffff !important;
-    vertical-align: middle;
-    &:hover {
-        opacity: 0.8;
+    .header-logo {
+        height: 32px;
+        margin-right: 8px;
+        vertical-align: middle;
     }
-}
 
-/**
- * Navigation
- */
-.nav {
-    margin-top: 32px;
-    margin-bottom: 16px;
-}
+    .header-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #ffffff !important;
+        vertical-align: middle;
 
-.nav-title {
-    font-size: 16px;
-    color: #ffffff;
-    margin-right: 16px;
-    border-radius: 24px;
-    border: 1px solid #ffffff;
-    padding: 8px 16px 8px 16px;
-    &:hover {
-        opacity: 0.8;
-        border: 1px solid #ffffffdb;
-    }
-}
-
-/**
- * Index
- */
-.index-slogun {
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 80px;
-    margin-bottom: 80px;
-    line-height: 2;
-}
-
-.index-slogun-highlight {
-    color: #ff3c79 !important;
-}
-
-/**
- * Posts
- */
-.posts {
-    margin-top: 32px;
-    margin-bottom: 32px;
-}
-
-.posts-list {
-    list-style: none;
-    > li {
-        border-bottom: 1px solid #dedede;
         &:hover {
             opacity: 0.8;
         }
     }
 }
 
-.posts-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333e4c;
+.nav {
     margin-top: 32px;
+    margin-bottom: 16px;
+
+    .nav-title {
+        font-size: 16px;
+        color: #ffffff;
+        margin-right: 16px;
+        border-radius: 24px;
+        border: 1px solid #ffffff;
+        padding: 8px 16px 8px 16px;
+
+        &:hover {
+            opacity: 0.8;
+            border: 1px solid #ffffffdb;
+        }
+    }
 }
 
-.posts-excert {
-    font-size: 18px;
-    font-weight: normal;
-    color: #333e4c;
-    margin-top: 8px;
-}
-
-.posts-author {
-    margin-top: 24px;
-    margin-bottom: 24px;
-}
-
-.posts-author-img {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    float: left;
-    margin-right: 8px;
-    margin-bottom: 2px;
-}
-
-.posts-author-name {
-    font-size: 16px;
-    color: #333e4c;
-    display: block;
-}
-
-.posts-date {
-    font-size: 16px;
-    color: #90949a;
-    display: block;
-}
-
-.posts-summary {
-    font-size: 16px;
-    color: #90949a;
-    margin-top: 24px;
-    margin-bottom: 24px;
-}
-
-/**
- * Post
- */
-.post-title {
-    font-size: 32px;
-    font-weight: bold;
-    margin-top: 32px;
-    margin-bottom: 0px;
-}
-
-.post-excerpt {
-    font-size: 18px;
-    font-weight: normal;
-    color: #333e4c;
-    margin-top: 8px;
-}
-
-.post-date {
-    font-size: 16px;
-    color: #90949a;
-    display: block;
-    margin-top: 16px;
-}
-
-.post-content {
-    margin-bottom: 32px;
-    > h2 {
+.index {
+    .index-slogun {
         font-size: 24px;
         font-weight: bold;
-        margin: 0px;
-        margin-top: 16px;
-        padding-bottom: 16px;
-        border-bottom: 1px solid #dedede;
+        text-align: center;
+        margin-top: 80px;
+        margin-bottom: 80px;
+        line-height: 2;
     }
-    > h3 {
-        font-size: 16px;
-        font-weight: bold;
-        margin: 0px;
-        margin-top: 16px;
+
+    .index-slogun-highlight {
+        color: #ff3c79 !important;
     }
-    > h4 {
-        font-size: 12px;
-        font-weight: bold;
-        margin: 0px;
-        margin-top: 16px;
-    }
-    > ul {
+}
+
+.posts {
+    margin-top: 32px;
+    margin-bottom: 32px;
+
+    .posts-list {
         list-style: none;
-        margin: 0px;
-        padding-left: 16px;
+
+        li {
+            border-bottom: 1px solid #dedede;
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+
+    .posts-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333e4c;
+        margin-top: 32px;
+    }
+
+    .posts-excerpt {
+        font-size: 18px;
+        font-weight: normal;
+        color: #333e4c;
         margin-top: 8px;
-        > li {
-            line-height: 1.5;
-        }
-    }
-    > ol {
-        margin: 0px;
-        padding-left: 16px;
-        margin-top: 8px;
-        > li {
-            line-height: 1.5;
-        }
-    }
-}
-
-/**
- * Site footer
- */
-.site-footer {
-    border-top: 1px solid $border-color-01;
-    padding: $spacing-unit 0;
-}
-
-.footer-heading {
-    @include relative-font-size(1.125);
-    margin-bottom: $spacing-unit / 2;
-}
-
-.feed-subscribe .svg-icon {
-    padding: 5px 5px 2px 0
-}
-
-.contact-list,
-.social-media-list {
-    list-style: none;
-    margin-left: 0;
-}
-
-.footer-col-wrapper,
-.social-links {
-    @include relative-font-size(0.9375);
-    color: $brand-color;
-}
-
-.footer-col {
-    margin-bottom: $spacing-unit / 2;
-}
-
-.footer-col-1,
-.footer-col-2 {
-    width: calc(50% - (#{$spacing-unit} / 2));
-}
-
-.footer-col-3 {
-    width: calc(100% - (#{$spacing-unit} / 2));
-}
-
-@media screen and (min-width: $on-large) {
-    .footer-col-1 {
-        width: calc(35% - (#{$spacing-unit} / 2));
     }
 
-    .footer-col-2 {
-        width: calc(20% - (#{$spacing-unit} / 2));
+    .posts-author {
+        margin-top: 24px;
+        margin-bottom: 24px;
     }
 
-    .footer-col-3 {
-        width: calc(45% - (#{$spacing-unit} / 2));
+    .posts-author-img {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        float: left;
+        margin-right: 8px;
+        margin-bottom: 2px;
+    }
+
+    .posts-author-name {
+        font-size: 16px;
+        color: #333e4c;
+        display: block;
+    }
+
+    .posts-date {
+        font-size: 16px;
+        color: #90949a;
+        display: block;
+    }
+
+    .posts-summary {
+        font-size: 16px;
+        color: #90949a;
+        margin-top: 24px;
+        margin-bottom: 24px;
     }
 }
 
-@media screen and (min-width: $on-medium) {
-    .footer-col-wrapper {
-        display: flex
-    }
+.post {
+    margin-top: 32px;
+    margin-bottom: 32px;
 
-    .footer-col {
-        width: calc(100% - (#{$spacing-unit} / 2));
-        padding: 0 ($spacing-unit / 2);
+    header {
+        border-radius: 8px;
+        color: #ffffff;
+        padding: 32px 24px 32px 24px;
+        margin-bottom: 24px;
 
-        &:first-child {
-            padding-right: $spacing-unit / 2;
-            padding-left: 0;
+        .post-tag {
+            font-size: 16px;
         }
 
-        &:last-child {
-            padding-right: 0;
-            padding-left: $spacing-unit / 2;
+        .post-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 16px;
+            margin-bottom: 0px;
+        }
+
+        .post-excerpt {
+            font-size: 18px;
+            margin-top: 8px;
+            margin-bottom: 0px;
+        }
+
+        .post-author {
+            margin-top: 24px;
+
+            .post-author-img {
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                float: left;
+                margin-right: 8px;
+                margin-bottom: 2px;
+            }
+
+            .post-author-name {
+                font-size: 16px;
+                display: block;
+            }
+
+            .post-date {
+                font-size: 16px;
+                display: block;
+            }
         }
     }
-}
 
-/**
- * Pagination navbar
- */
-.pagination {
-    margin-bottom: $spacing-unit;
-    @extend .social-media-list;
-    li {
-        a, div {
-            min-width: 41px;
-            text-align: center;
-            box-sizing: border-box;
+    .post-content {
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0px;
+            margin-top: 32px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #dedede;
         }
-        div {
-            display: block;
-            padding: $spacing-unit / 4;
-            border: 1px solid transparent;
 
-            &.pager-edge {
-                color: $border-color-01;
-                border: 1px dashed;
+        h3 {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0px;
+            margin-top: 16px;
+        }
+
+        h4 {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0px;
+            margin-top: 16px;
+        }
+
+        h5 {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0px;
+            margin-top: 16px;
+        }
+
+        h6 {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0px;
+            margin-top: 16px;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0px;
+            padding-left: 16px;
+            margin-top: 8px;
+
+            li {
+                line-height: 1.5;
+            }
+        }
+
+        ol {
+            margin: 0px;
+            padding-left: 16px;
+            margin-top: 8px;
+
+            li {
+                line-height: 1.5;
             }
         }
     }
 }
 
-
-
-/**
- * Grid helpers
- */
 @media screen and (min-width: $on-large) {
     .one-half {
         width: calc(50% - (#{$spacing-unit} / 2));

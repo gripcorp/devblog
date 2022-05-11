@@ -1,30 +1,18 @@
-/**
- * Html
- */
 html {
     font-family: "Source Sans Pro","APPLE SD Gothic Neo",HelveticaNeue,Helvetica,"NanumGothic","맑은 고딕","Malgun Gothic",arial,sans-serif,"Source Sans Pro",sans-serif;
     font-size: 14px;
 }
 
-/**
- * Body
- */
 body {
     margin: 0px;
     color: #333e4c;
 }
 
-/**
- * Anchor
- */
 a {
     cursor: pointer !important;
     text-decoration: none !important;
 }
 
-/**
- * Code
- */
 pre {
     background: #fafafa !important;
     border-radius: 8px;
@@ -39,10 +27,6 @@ code {
     padding: 2px 4px 2px 4px;
 }
 
-
-/**
- * Selection
- */
 ::selection {
     background: #ff008adb;
     color: #ffffff;
