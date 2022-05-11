@@ -2,7 +2,8 @@
 layout: default
 ---
 <article class="post">
-    <header style="background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url({{ page.header_image }}); background-position: center;">
+    {% assign header_image_url = "/assets/img/" | append: page.header_image %}
+    <header style="background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url({{ header_image_url | relative_url }}); background-position: center;">
         <div>
             {% for tag in page.tags %}
             <span class="post-tag">#{{ tag }}</span>

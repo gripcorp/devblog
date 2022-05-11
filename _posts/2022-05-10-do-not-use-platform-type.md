@@ -4,7 +4,8 @@ github_nickname: jongmin-kim-grip
 title: 이펙티브 코틀린 - 3. 최대한 플랫폼 타입을 사용하지 맙시다 
 excerpt: 코틀린을 자바와 함께 사용할 때 발생할 수 있는 문제는? 
 categories: [posts, kotlin, effective-kotlin]
-tag: [kotlin, effective-kotlin]
+tags: [kotlin, effective-kotlin]
+header_image: effective-kotlin-header.jpeg
 ---
 ## 코틀린을 자바와 함께 사용할 경우
 - 코틀린은 널 안정성이 있기 때문에 자바와 다르게 NPE를 거의 찾아보기 힘듭니다.

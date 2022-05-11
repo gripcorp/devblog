@@ -4,7 +4,8 @@ github_nickname: jongmin-kim-grip
 title: 이펙티브 코틀린 - 2. 변수의 스코프를 최소화합시다
 excerpt: 좁힐 수 있을 때 최대한 좁혀놓으면 편해요 
 categories: [posts, kotlin, effective-kotlin]
-tag: [kotlin, effective-kotlin]
+tags: [kotlin, effective-kotlin]
+header_image: effective-kotlin-header.jpeg
 ---
 ## 스코프란
 - 요소를 볼 수 있는 컴퓨터 프로그램 영역입니다.
