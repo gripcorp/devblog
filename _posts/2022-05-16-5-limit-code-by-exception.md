@@ -18,7 +18,7 @@ header_image: effective-kotlin-header.jpeg
 
 ### require
 - Argument와 관련된 요구사항을 명시할 때 사용합니다.
-- 요구사항을 만족시키지 못할 경우 IllegalArgumentException을 발생시킵니다.
+- 요구사항을 만족시키지 못할 경우 `IllegalArgumentException`을 발생시킵니다.
 
 ```kotlin
 fun factorial(n: Int): Long {
@@ -37,7 +37,7 @@ fun sendEmail(user: User, message: String) {
 
 ### check
 - State와 관련된 요구사항을 명시할 때 사용합니다.
-- 요구사항을 만족시키지 못할 경우 IllegalStateException을 발생시킵니다.
+- 요구사항을 만족시키지 못할 경우 `IllegalStateException`을 발생시킵니다.
 
 ```kotlin
 fun speak(text: String) {
@@ -54,7 +54,7 @@ fun getUserInfo(): UserInfo {
 ### assert
 - 값이 true인지 판별합니다.
 - 테스트 모드에서 테스트를 할 때 사용합니다.
-- 크리티컬한 코드라면 check를 사용하는 것을 권장합니다.
+- 크리티컬한 코드라면 `check`를 사용하는 것을 권장합니다.
 
 ```kotlin
 class StackTest {
