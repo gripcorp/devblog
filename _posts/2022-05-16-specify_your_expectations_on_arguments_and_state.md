@@ -1,7 +1,7 @@
 ---
 author_name: 장상진
 github_nickname: AlbertJang
-title: 이펙티브 코틀린 - 7. 예외를 활용해 코드에 제한을 걸어라
+title: 이펙티브 코틀린 - 5. 예외를 활용해 코드에 제한을 걸어라
 excerpt: 제한을 걸어 예상치 못한 상황을 막자
 categories: [posts, kotlin, effective-kotlin]
 tags: [kotlin, effective-kotlin]
