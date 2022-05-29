@@ -2,7 +2,7 @@
 ---
 author_name: 승열
 github_nickname: seung-yeol
-title: 이펙티브 코틀린 - 12.Unit?을 리턴하지 말라
+title: 이펙티브 코틀린 - 13.Unit?을 리턴하지 말라
 excerpt: 
 categories: [posts, kotlin, effective-kotlin]
 tags: [kotlin, effective-kotlin]
