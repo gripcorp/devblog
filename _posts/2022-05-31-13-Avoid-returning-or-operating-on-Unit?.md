@@ -1,4 +1,3 @@
-
 ---
 author_name: 승열
 github_nickname: seung-yeol
