@@ -12,23 +12,23 @@ header_image: effective-kotlin-header.jpeg
 코드에서 Argument의 의미가 명확하지 않은 경우가 있습니다.
 
 ```kotlin
-val text = (1..10).joinToString(“|”)
+val text = (1..10).joinToString("|")
 ```
 `joinToString`에 대해 미리 알지 못한다면 오해할 수 있습니다.
 
 ```kotlin
-val text = (1..10).joinToString(separator = “|”)
+val text = (1..10).joinToString(separator = "|")
 ```
 `separator`에 정확한 값이 들어갔는지 모릅니다.
 
 ```kotlin
-val separator = “|”
+val separator = "|"
 val text = (1..10).joinToString(separator)
 ```
 함수 호출에서 `separator`에 제대로 들어갔는지 모릅니다.
 
 ```kotlin
-val separator = “|”
+val separator = "|"
 val text = (1..10).joinToString(separator = separator)
 ```
 
