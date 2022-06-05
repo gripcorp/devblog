@@ -76,12 +76,13 @@ fun call(before: () -> Unit = {}, after: () -> Unit = {}) {
 }
 
 call ({ print("CALL")}) // CALLMiddle
-call { print("CALL") }   // MiddleCALL
+call { print("CALL") }  // MiddleCALL
 ```
 
 ```kotlin
+// Good!
 call (before = { print("CALL") }) // CALLMiddle
-call (after = { print("CALL") })    // MiddleCALL
+call (after = { print("CALL") })  // MiddleCALL
 ```
 
 Rxjava에서 `Observable`을 구독할 때 함수를 설정하는데 이는 함수 타입 Argument를 자주 볼 수 있는 형태입니다.
