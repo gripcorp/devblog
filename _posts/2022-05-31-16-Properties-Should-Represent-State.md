@@ -12,7 +12,7 @@ header_image: effective-kotlin-header.jpeg
 
 코틀린의 프로퍼티는 자바의 필드와 비슷하지만 다르다.
 
-```kt
+```kotlin
 //코틀린의 프로퍼티
 var name: String? = null
 
@@ -26,7 +26,7 @@ String name = null
 `field`는 프로퍼티의 데이터를 저장해 두는 백킹 필드에 대한 레퍼런스이다.
 `val`의 경우 field가 만들어 지지 않는다.
 
-```kt
+```kotlin
 var name: String? = null
     get() = field?.toUpperCase()
     set(value) {
@@ -51,7 +51,7 @@ interface Person {
 
 이렇게 한다면 게터를 가질 거라는 것을 나타낸다.
 
-```kt
+```kotlin
 open class Supercomputer {
     open val theAnswer: Long = 42
 }
@@ -64,13 +64,13 @@ class AndroidComputer: SuperComputer() {
 프로퍼티를 위임할 수도 있다.
 프로퍼티와 관련된 다양한 조작을 할 수 있고 이로인해 프로퍼티의 동작을 추출해서 재사용할 수 있다.(아이템 21)
 
-```kt
+```kotlin
 val db: Database by laze { connectToDb() }
 ```
 
 프로퍼티는 본질적으로 함수이므로, 확장 프로퍼티를 만들 수도 있다.
 
-```kt
+```kotlin
 val Context.preferences: SharedPreferences
     get() = PreferenceManager
         .getDefaultSharedPreferences(this)
@@ -86,7 +86,7 @@ val Context.notificationManager: NotificationManager
 
 프로퍼티를 함수 대신 사용할 수도 있지만 그렇다고 완전히 대체해서 사용하는 것은 좋지 않다.
 
-```kt
+```kotlin
 // 이렇게 하지 마세요!
 val Tree<Int>.sum: Int {
     get() = when (this) {
@@ -117,7 +117,7 @@ fun Tree<Int>.sum(): Int = when (this) {
 
 상태를 추출/설정할 때는 프로퍼티를 사용해야 한다.
 
-```kt
+```kotlin
 class UserIncorrect {
     private var name: String = ""
     
