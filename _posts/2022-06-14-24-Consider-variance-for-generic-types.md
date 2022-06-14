@@ -203,6 +203,8 @@ class Box<out T> {
 
 - **private로 제한**하면, 오류가 발생하지 않음
 - 객체 내부에서는 **업캐스트 객체**에 covariant(out)를 사용할 수 없음
+- 생성 되거나 노출되는 타입에만 covariant(out)를 사용
+- producer or immutable 데이터 홀더에서 많이 사용
 
 ```kotlin
 fun append(list: MutableList<Any>) {
@@ -214,13 +216,190 @@ val str: String = strs[3]
 print(str)
 ```
 
-- 
+- MutableList<T>는 in 한정자 위치에서 사용되며, 안전하지 않으므로 invarinat(불공변성)임
 
+  
+### Response
 
+variance 한정자 덕분에 모두 참이 됨
+  
+- Response<**T**>라면 T의 모든 **서브타입**이 허용됨 
+  (ex, Response<**Any**>가 예상된다면, Response<**Int**>와 Responce<**String**>이 허용됨)
+- Response<**T1,T2**>라면 T1과 T2의 모든 **서브타입**이 허용됨
+- Failure<**T**>라면, T의 모든 **서브타입** Failure가 허용됨
+  (ex, Failure<**number**>라면, Failure<**Int**>와 Failure<**Double**>이 모두 허용됨, Failure<**Any**>라면, Failure<**Int**>와 Failure<**String**>이 모두 허용됨)
 
 ```kotlin
-class Cup<T>
+sealed class Response<out R, out E>
+class Success<out R>(val value: R): Response<R, Nothing>()
+class Failure<out E>(val error: E): Response<Nothing, E>()
 ```
 
+- covariant와 Nothing타입으로 인해서 
+- Failure는 오류타입을 지정하지 않아도 됨
+- Success는 잠재적인 값을 지정하지 않아도 됨
 
+```kotlin
+open class Car
+interface Boat
+class Amphibious: Car(), Boat
+
+fun getAmphibious(): Amphibious = Amphibious()
+val car: Car = getAmphibious()
+val boat: Boat = getAmphibious()  
+```
+
+- covariant(out)와 public in 위치와 같은 문제는 contravariant(in) 타입 파라미터와 public out 위치 (함수 리턴 타입 또는 프로퍼티 타입)에서도 발생
+- out 위치는 암무적인 업캐스팅을 허용함
+- contravariant(in)에 맞는 동작이 아님
+ 
+  
+```kotlin
+class Box<in T>(
+  // Illegal in Kotlin
+  val value: T
+)
+
+val garage: Box<Car> = Box(Car())
+val amphibiousSpot: Box<Amphibious> = garage
+val boat: Boat = garage.value // But I only have a Car
+
+val noSpot: Box<Nothing> = Box<Car>(Car())
+val boat: Nothing = noSpot.value
+// I cannot produce Nothing!
+```
+  
+- 어떤 상자에 어떤 타입이 들어 있는지 확실하게 알수 없음
+
+ 
+```kotlin
+class Box<in T> {
+  var value: T? = null // Error 
+  
+  fun set(value: T) {
+    this.value = value
+  }
+  
+ fun get(): T = value // Error
+     ?: error("Value not set")
+}
+```    
+
+- 코틀린은 **contravariant(in) 타입 파라미터를 public out 한정자 위치에 사용하는 것을 금지**함.  
+  
+```kotlin
+class Box<in T> {
+  private var value: T? = null 
+  
+  fun set(value: T) {
+    this.value = value
+  }
+  
+ private fun get(): T = value
+     ?: error("Value not set")
+}
+```     
+
+- private 일 때는 문제가 없음  
+  
+이런 형태로 타입 파라미터에 contravariant(in)를 사용하는 경우는 kotlin.coroutines.Continuation이 있음
+
+```kotlin
+public interface Continuation<in T> {
+  public val context: CoroutineContext 
+  public fun resumeWith(result: Result<T>)
+}
+```      
+
+## varinace 한정자의 위치
+
+```kotlin
+// 선언 쪽의 varinace 한정자
+class Box<out T>(val value: T)
+val boxStr: Box<String> = Box("Str")
+val boxAny: Box<Any> = boxStr
+```    
+  
+1. 선언부분
+- 일반적인 위치
+- 클래스와 인터페이스 선언에 한전자가 적용됨
+- 클래스와 인터페이스가 사용되는 모든 곳에 영향을 줌 
+
+```kotlin
+class Box<T>(val value: T)
+val boxStr: Box<String> = Box("Str")
+
+// Use-side variance modifier
+val boxAny: Box<out Any> = boxStr
+```   
+
+2. 클래스와 인터페이스를 **활용하는 위치**
+- 이 위치에 variance 한정자를 사용하면 특정한 변수에만 variance 한정자가 적용 됨
+- 모든 인스턴스에 variance 한정자를 적용하지 않고 특정 인스턴스에만 적용 해야할 때 사용
+  (ex, MutableList 는 in 한정자를 포함하면, 요소를 리턴 할 수 없으므로 in 한정자를 붙이지 않음)
+- 단일 파라미터 타입에 in 한정자를 붙여서 contravariant를 가지게하는 것이 가능
+  (여러 가지 타입을 받아 들일 수 있게 됨)
+    
+```kotlin
+interface Dog
+interface Cutie
+data class Puppy(val name: String): Dog, Cutie
+data class Hound(val name: String): Dog
+data class Cat(val name: String): Cutie
+
+fun fillWithPuppies(list: MutableList<in Puppy>) {
+list.add(Puppy("Jim"))
+list.add(Puppy("Beam"))
+}
+
+val dogs = mutableListOf<Dog>(Hound("Pluto"))
+fillWithPuppies(dogs)
+println(dogs)
+// [Hound(name=Pluto), Puppy(name=Jim), Puppy(name=Beam)]
+
+val animals = mutableListOf<Cutie>(Cat("Felix"))
+fillWithPuppies(animals)
+println(animals)
+// [Cat(name=Felix), Puppy(name=Jim), Puppy(name=Beam)]  
+```    
+
+### variance 한정자를 사용하면 위치가 제한 됨
+  
+- MutableList<**out T**>가 있다면, get으로 요소를 추출 했을 때 T 타입이 나옴
+- 하지만 set은 nothing 타입의 아규먼트가 전달 될 것이라 예상됨으로 사용 할 수가 없음
+  (모든 타입의 **서브타입**을 가진 리스트(Nothing 리스트)가 존재할 가능성이 있기 때문)
+  
+- MutableList<**in T**>를 사용 할 경우, get과 set을 모두 사용 할 수 있음
+- 하지만 get를 사용하면 전달 자료형은 Any?가 됨
+  (모든 타입의 **슈퍼타입**을 가진 리스트(Any 리스트)가 존재 할 가능성이 있기 때문)
+  
 ## 요약 정리
+  
+### 타입 파라미터의 기본적인 variance의 동작은 invariant이다
+
+- 만약 Cup<**T**>라고 하면, 타입 파라미터 T는 invariant이다.
+- A가 B의 서브타입이라고 할때, Cup<**A**>와 Cup<**B**>는 아무런 관계도 없다.  
+  
+### out 한정자는 타입 파라미터를 covariant 하게 만듦
+
+- 만약 Cup<**T**>라고 하면, 타입 파라미터 T는 covariant 이다.
+- A가 B의 서브타입이라고 할때, Cup<**A**>와 Cup<**B**>는 **서브 타입**이 됨
+- covariant 타입은 out 위치에서 사용 할 수 있음
+  
+### in 한정자는 타입 파라미터를 contravariant 하게 만듦  
+
+- 만약 Cup<**T**>라고 하면, 타입 파라미터 T는 contravariant 이다.
+- A가 B의 서브타입이라고 할때, Cup<**B**>는 Cup<**A**>의 **슈퍼 타입**이 됨
+- contravariant 타입은 in 위치에서 사용 할 수 있음  
+  
+### 코틀린에서 List와 Set의 타입 파라미터는 covariant(out 한정자)이다.
+  
+- List<**Any**>가 예상되는 모든 곳에 전달 할 수 있음
+- Map에서 값의 타입을 나타내는 타입 파라미터는 covariant(out 한정자)이다 
+- Array, MutableList, MutableSet, MutableMap의 타입 파라미터는 invariant(한정자 지정없음)이다
+  
+### 함수 타입의 파라미터 타입은 contravariant(in 한정자)이다.
+### 함수 타입의 리턴 타입은 covariant(out 한정자)이다.
+### 리턴만 되는 타입에는 covariant(out 한정자)를 사용한다.(produced or exposed)
+### 허용만(only accepted) 되는 타입에는 contravariant(in 한정자)를 사용한다.  
+  
