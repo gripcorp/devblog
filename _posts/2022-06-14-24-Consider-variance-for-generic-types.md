@@ -229,13 +229,6 @@ variance 한정자 덕분에 모두 참이 됨
 - -- Failure<**T**>라면, T의 모든 **서브타입** Failure가 허용됨
   (ex, Failure<**number**>라면, Failure<**Int**>와 Failure<**Double**>이 모두 허용됨, Failure<**Any**>라면, Failure<**Int**>와 Failure<**String**>이 모두 허용됨)
 
-##### Response<**T**>라면 T의 모든 **서브타입**이 허용됨 
-  (ex, Response<**Any**>가 예상된다면, Response<**Int**>와 Responce<**String**>이 허용됨)
-### - Response<**T1,T2**>라면 T1과 T2의 모든 **서브타입**이 허용됨
-#### Failure<**T**>라면, T의 모든 **서브타입** Failure가 허용됨
-  (ex, Failure<**number**>라면, Failure<**Int**>와 Failure<**Double**>이 모두 허용됨, Failure<**Any**>라면, Failure<**Int**>와 Failure<**String**>이 모두 허용됨)
-  
-  
 ```kotlin
 sealed class Response<out R, out E>
 class Success<out R>(val value: R): Response<R, Nothing>()
@@ -328,9 +321,9 @@ val boxAny: Box<Any> = boxStr
 ```    
   
 ### 1. 선언부분
-- 일반적인 위치
-- 클래스와 인터페이스 선언에 한전자가 적용됨
-- 클래스와 인터페이스가 사용되는 모든 곳에 영향을 줌 
+- -- 일반적인 위치
+- -- 클래스와 인터페이스 선언에 한전자가 적용됨
+- -- 클래스와 인터페이스가 사용되는 모든 곳에 영향을 줌 
 
 ```kotlin
 class Box<T>(val value: T)
@@ -341,10 +334,10 @@ val boxAny: Box<out Any> = boxStr
 ```   
 
 ### 2. 클래스와 인터페이스를 **활용하는 위치**
-- 이 위치에 variance 한정자를 사용하면 특정한 변수에만 variance 한정자가 적용 됨
-- 모든 인스턴스에 variance 한정자를 적용하지 않고 특정 인스턴스에만 적용 해야할 때 사용
+- -- 이 위치에 variance 한정자를 사용하면 특정한 변수에만 variance 한정자가 적용 됨
+- -- 모든 인스턴스에 variance 한정자를 적용하지 않고 특정 인스턴스에만 적용 해야할 때 사용
   (ex, MutableList 는 in 한정자를 포함하면, 요소를 리턴 할 수 없으므로 in 한정자를 붙이지 않음)
-- 단일 파라미터 타입에 in 한정자를 붙여서 contravariant를 가지게하는 것이 가능
+- -- 단일 파라미터 타입에 in 한정자를 붙여서 contravariant를 가지게하는 것이 가능
   (여러 가지 타입을 받아 들일 수 있게 됨)
     
 ```kotlin
