@@ -320,7 +320,7 @@ val boxStr: Box<String> = Box("Str")
 val boxAny: Box<Any> = boxStr
 ```    
   
-1. 선언부분
+### 1. 선언부분
 - 일반적인 위치
 - 클래스와 인터페이스 선언에 한전자가 적용됨
 - 클래스와 인터페이스가 사용되는 모든 곳에 영향을 줌 
@@ -333,7 +333,7 @@ val boxStr: Box<String> = Box("Str")
 val boxAny: Box<out Any> = boxStr
 ```   
 
-2. 클래스와 인터페이스를 **활용하는 위치**
+### 2. 클래스와 인터페이스를 **활용하는 위치**
 - 이 위치에 variance 한정자를 사용하면 특정한 변수에만 variance 한정자가 적용 됨
 - 모든 인스턴스에 variance 한정자를 적용하지 않고 특정 인스턴스에만 적용 해야할 때 사용
   (ex, MutableList 는 in 한정자를 포함하면, 요소를 리턴 할 수 없으므로 in 한정자를 붙이지 않음)
@@ -377,20 +377,20 @@ println(animals)
   
 ### 1. 타입 파라미터의 기본적인 variance의 동작은 invariant이다
 
-- 만약 Cup<**T**>라고 하면, 타입 파라미터 T는 invariant이다.
-- A가 B의 서브타입이라고 할때, Cup<**A**>와 Cup<**B**>는 아무런 관계도 없다.  
+- - 만약 Cup<**T**>라고 하면, 타입 파라미터 T는 invariant이다.
+- -  A가 B의 서브타입이라고 할때, Cup<**A**>와 Cup<**B**>는 아무런 관계도 없다.  
   
 ### 2. out 한정자는 타입 파라미터를 covariant 하게 만듦
 
-- 만약 Cup<**T**>라고 하면, 타입 파라미터 T는 covariant 이다.
-- A가 B의 서브타입이라고 할때, Cup<**A**>와 Cup<**B**>는 **서브 타입**이 됨
-- covariant 타입은 out 위치에서 사용 할 수 있음
+- * 만약 Cup<**T**>라고 하면, 타입 파라미터 T는 covariant 이다.
+- * A가 B의 서브타입이라고 할때, Cup<**A**>와 Cup<**B**>는 **서브 타입**이 됨
+- * covariant 타입은 out 위치에서 사용 할 수 있음
   
 ### 3. in 한정자는 타입 파라미터를 contravariant 하게 만듦  
 
-- 만약 Cup<**T**>라고 하면, 타입 파라미터 T는 contravariant 이다.
-- A가 B의 서브타입이라고 할때, Cup<**B**>는 Cup<**A**>의 **슈퍼 타입**이 됨
-- contravariant 타입은 in 위치에서 사용 할 수 있음  
+- * 만약 Cup<**T**>라고 하면, 타입 파라미터 T는 contravariant 이다.
+- * A가 B의 서브타입이라고 할때, Cup<**B**>는 Cup<**A**>의 **슈퍼 타입**이 됨
+- * contravariant 타입은 in 위치에서 사용 할 수 있음  
   
 ### 4. 코틀린에서 List와 Set의 타입 파라미터는 covariant(out 한정자)이다.
   
