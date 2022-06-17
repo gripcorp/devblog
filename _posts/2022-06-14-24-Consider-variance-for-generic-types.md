@@ -2,7 +2,7 @@
 author_name: 애나
 github_nickname: jyeon-park
 title: 이펙티브 코틀린 - 24.제네릭 타입과 variance 한정자를 활용하라
-excerpt: 
+excerpt: variance 한정자(out or in) 
 categories: [posts, kotlin, effective-kotlin]
 tags: [kotlin, effective-kotlin]
 header_image: effective-kotlin-header.jpeg
@@ -102,7 +102,7 @@ printProcessedNumber(numberHash)
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/100750946/173183887-d18d34e4-ee57-42b8-ab91-215a7a7a1e2e.png">
 
 - 코틀린 함수 타입의 모든 **파라미터 타입**은 contravariant(in)
-- 모든 **리턴 타입**은 convariant(out)  
+- 모든 **리턴 타입**은 covariant(out)  
 
 <img width="400" alt="image" src="https://user-images.githubusercontent.com/100750946/173183947-23b2eb62-6d06-451f-a6fd-c43d20eca697.png">
 
@@ -145,7 +145,7 @@ takeDog(Puppy())
 takeDog(Hound())
 ```
 
-- convariant (out) 타입 파라미터가 in 한정자 위치(예를들어 타입 파라미터)에 있다면, convariant와 업캐스팅을 연결해서 우리가 원하는 타입을 아무것이나 전달 가능
+- covariant (out) 타입 파라미터가 in 한정자 위치(예를들어 타입 파라미터)에 있다면, covariant와 업캐스팅을 연결해서 우리가 원하는 타입을 아무것이나 전달 가능
 - 따라서, value는 매우 구체적인 타입이라서 value에 Dog 타입으로 지정하면 String 타입을 넣을 수 없음
 
 ```kotlin
@@ -375,31 +375,31 @@ println(animals)
   
 ## 요약 정리
   
-### 타입 파라미터의 기본적인 variance의 동작은 invariant이다
+### 1. 타입 파라미터의 기본적인 variance의 동작은 invariant이다
 
 - 만약 Cup<**T**>라고 하면, 타입 파라미터 T는 invariant이다.
 - A가 B의 서브타입이라고 할때, Cup<**A**>와 Cup<**B**>는 아무런 관계도 없다.  
   
-### out 한정자는 타입 파라미터를 covariant 하게 만듦
+### 2. out 한정자는 타입 파라미터를 covariant 하게 만듦
 
 - 만약 Cup<**T**>라고 하면, 타입 파라미터 T는 covariant 이다.
 - A가 B의 서브타입이라고 할때, Cup<**A**>와 Cup<**B**>는 **서브 타입**이 됨
 - covariant 타입은 out 위치에서 사용 할 수 있음
   
-### in 한정자는 타입 파라미터를 contravariant 하게 만듦  
+### 3. in 한정자는 타입 파라미터를 contravariant 하게 만듦  
 
 - 만약 Cup<**T**>라고 하면, 타입 파라미터 T는 contravariant 이다.
 - A가 B의 서브타입이라고 할때, Cup<**B**>는 Cup<**A**>의 **슈퍼 타입**이 됨
 - contravariant 타입은 in 위치에서 사용 할 수 있음  
   
-### 코틀린에서 List와 Set의 타입 파라미터는 covariant(out 한정자)이다.
+### 4. 코틀린에서 List와 Set의 타입 파라미터는 covariant(out 한정자)이다.
   
-- List<**Any**>가 예상되는 모든 곳에 전달 할 수 있음
-- Map에서 값의 타입을 나타내는 타입 파라미터는 covariant(out 한정자)이다 
-- Array, MutableList, MutableSet, MutableMap의 타입 파라미터는 invariant(한정자 지정없음)이다
+- * List<**Any**>가 예상되는 모든 곳에 전달 할 수 있음
+- * Map에서 값의 타입을 나타내는 타입 파라미터는 covariant(out 한정자)이다 
+- * Array, MutableList, MutableSet, MutableMap의 타입 파라미터는 invariant(한정자 지정없음)이다
   
-### 함수 타입의 파라미터 타입은 contravariant(in 한정자)이다.
-### 함수 타입의 리턴 타입은 covariant(out 한정자)이다.
-### 리턴만 되는 타입에는 covariant(out 한정자)를 사용한다.(produced or exposed)
-### 허용만(only accepted) 되는 타입에는 contravariant(in 한정자)를 사용한다.  
+### 5. 함수 타입의 파라미터 타입은 contravariant(in 한정자)이다.
+### 6. 함수 타입의 리턴 타입은 covariant(out 한정자)이다.
+### 7. 리턴만 되는 타입에는 covariant(out 한정자)를 사용한다.(produced or exposed)
+### 8. 허용만(only accepted) 되는 타입에는 contravariant(in 한정자)를 사용한다.  
   
