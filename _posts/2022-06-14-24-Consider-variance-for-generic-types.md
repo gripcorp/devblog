@@ -223,12 +223,19 @@ print(str)
 
 variance 한정자 덕분에 모두 참이 됨
   
--- Response<**T**>라면 T의 모든 **서브타입**이 허용됨 
+- -- Response<**T**>라면 T의 모든 **서브타입**이 허용됨 
   (ex, Response<**Any**>가 예상된다면, Response<**Int**>와 Responce<**String**>이 허용됨)
--- Response<**T1,T2**>라면 T1과 T2의 모든 **서브타입**이 허용됨
--- Failure<**T**>라면, T의 모든 **서브타입** Failure가 허용됨
+- -- Response<**T1,T2**>라면 T1과 T2의 모든 **서브타입**이 허용됨
+- -- Failure<**T**>라면, T의 모든 **서브타입** Failure가 허용됨
   (ex, Failure<**number**>라면, Failure<**Int**>와 Failure<**Double**>이 모두 허용됨, Failure<**Any**>라면, Failure<**Int**>와 Failure<**String**>이 모두 허용됨)
 
+##### Response<**T**>라면 T의 모든 **서브타입**이 허용됨 
+  (ex, Response<**Any**>가 예상된다면, Response<**Int**>와 Responce<**String**>이 허용됨)
+### - Response<**T1,T2**>라면 T1과 T2의 모든 **서브타입**이 허용됨
+#### Failure<**T**>라면, T의 모든 **서브타입** Failure가 허용됨
+  (ex, Failure<**number**>라면, Failure<**Int**>와 Failure<**Double**>이 모두 허용됨, Failure<**Any**>라면, Failure<**Int**>와 Failure<**String**>이 모두 허용됨)
+  
+  
 ```kotlin
 sealed class Response<out R, out E>
 class Success<out R>(val value: R): Response<R, Nothing>()
@@ -375,31 +382,31 @@ println(animals)
   
 ## 요약 정리
   
-### 1. 타입 파라미터의 기본적인 variance의 동작은 invariant이다
+#### 1. 타입 파라미터의 기본적인 variance의 동작은 invariant이다
 
 - - 만약 Cup<**T**>라고 하면, 타입 파라미터 T는 invariant이다.
 - -  A가 B의 서브타입이라고 할때, Cup<**A**>와 Cup<**B**>는 아무런 관계도 없다.  
   
-### 2. out 한정자는 타입 파라미터를 covariant 하게 만듦
+#### 2. out 한정자는 타입 파라미터를 covariant 하게 만듦
 
 - * 만약 Cup<**T**>라고 하면, 타입 파라미터 T는 covariant 이다.
 - * A가 B의 서브타입이라고 할때, Cup<**A**>와 Cup<**B**>는 **서브 타입**이 됨
 - * covariant 타입은 out 위치에서 사용 할 수 있음
   
-### 3. in 한정자는 타입 파라미터를 contravariant 하게 만듦  
+#### 3. in 한정자는 타입 파라미터를 contravariant 하게 만듦  
 
 - * 만약 Cup<**T**>라고 하면, 타입 파라미터 T는 contravariant 이다.
 - * A가 B의 서브타입이라고 할때, Cup<**B**>는 Cup<**A**>의 **슈퍼 타입**이 됨
 - * contravariant 타입은 in 위치에서 사용 할 수 있음  
   
-### 4. 코틀린에서 List와 Set의 타입 파라미터는 covariant(out 한정자)이다.
+#### 4. 코틀린에서 List와 Set의 타입 파라미터는 covariant(out 한정자)이다.
   
 - * List<**Any**>가 예상되는 모든 곳에 전달 할 수 있음
 - * Map에서 값의 타입을 나타내는 타입 파라미터는 covariant(out 한정자)이다 
 - * Array, MutableList, MutableSet, MutableMap의 타입 파라미터는 invariant(한정자 지정없음)이다
   
-### 5. 함수 타입의 파라미터 타입은 contravariant(in 한정자)이다.
-### 6. 함수 타입의 리턴 타입은 covariant(out 한정자)이다.
-### 7. 리턴만 되는 타입에는 covariant(out 한정자)를 사용한다.(produced or exposed)
-### 8. 허용만(only accepted) 되는 타입에는 contravariant(in 한정자)를 사용한다.  
+#### 5. 함수 타입의 파라미터 타입은 contravariant(in 한정자)이다.
+#### 6. 함수 타입의 리턴 타입은 covariant(out 한정자)이다.
+#### 7. 리턴만 되는 타입에는 covariant(out 한정자)를 사용한다.(produced or exposed)
+#### 8. 허용만(only accepted) 되는 타입에는 contravariant(in 한정자)를 사용한다.  
   
