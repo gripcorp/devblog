@@ -223,10 +223,10 @@ print(str)
 
 variance 한정자 덕분에 모두 참이 됨
   
-- Response<**T**>라면 T의 모든 **서브타입**이 허용됨 
+-- Response<**T**>라면 T의 모든 **서브타입**이 허용됨 
   (ex, Response<**Any**>가 예상된다면, Response<**Int**>와 Responce<**String**>이 허용됨)
-- Response<**T1,T2**>라면 T1과 T2의 모든 **서브타입**이 허용됨
-- Failure<**T**>라면, T의 모든 **서브타입** Failure가 허용됨
+-- Response<**T1,T2**>라면 T1과 T2의 모든 **서브타입**이 허용됨
+-- Failure<**T**>라면, T의 모든 **서브타입** Failure가 허용됨
   (ex, Failure<**number**>라면, Failure<**Int**>와 Failure<**Double**>이 모두 허용됨, Failure<**Any**>라면, Failure<**Int**>와 Failure<**String**>이 모두 허용됨)
 
 ```kotlin
