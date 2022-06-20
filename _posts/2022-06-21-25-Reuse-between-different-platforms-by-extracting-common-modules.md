@@ -2,7 +2,7 @@
 author_name: 승열
 github_nickname: seung-yeol
 title: 이펙티브 코틀린 - 25.공통 모듈을 추출해서 여러 플랫폼에서 재사용하라
-excerpt: 라이브러리
+excerpt: 플랫폼 간 공통되는 코드는 모듈화하여 관리하라
 categories: [posts, kotlin, effective-kotlin]
 tags: [kotlin, effective-kotlin]
 header_image: effective-kotlin-header.jpeg
