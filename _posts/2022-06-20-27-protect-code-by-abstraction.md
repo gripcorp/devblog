@@ -127,6 +127,7 @@ class CallerTest {
 - 예를들어 `Kotlin`은 제공하는 라이브러리는 대부분 인터페이스 추상화로 제공합니다.
 - 이로서, JVM, Native, JavaScript 등 다양한 플랫폼에 관계 없이 콜러에 동일한 시그니처를 제공할 수 있습니다.
 - 앞서 만든 토스트 예제 코드에 스낵바가 추가되면 아래와 같이 작성할 수 있습니다.
+
 ```kotlin
 interface MessageShower {
     fun show(message: String, duration: Duration = Duration.LONG)
@@ -191,7 +192,7 @@ class CallerTest {
 
 ## 보편적인 객체 추상화
 - 고유 아이디를 생성하여 사용해야하는 경우, 보통 정수나 문자열 자료형을 생각해볼 수 있습니다.
-- 
+
 ```kotlin
 var nextId = 0
 
