@@ -59,7 +59,7 @@ context.toast("Hello World!")
 - 둘째, `duration` 파라미터는 현재 정수 자료형을 요구하고 있습니다.
 - 이 경우, 콜러는 어떤 값에 따라 출력이 변경되는지 알기 힘들며 의도하지 않은 값이 들어올 수 있습니다.
 - 따라서, `enum` 자료형으로 범위를 제한하면, 콜러의 실수를 방지할 수 있습니다.
-- FYI: [왜 Android API는 굳이 정수로 제공하는 것일까?](https://youtu.be/Hzs6OBcvNQE)
+- FYI: [왜 Android API는 굳이 정수로 제공하는 것일까?](https://youtu.be/Hzs6OBcvNQE)
 
 ## 클래스 추상화
 - 함수는 매우 단순한 추상화를 제공하며, 함수가 종료되면 상태를 유지할 수 없습니다.
